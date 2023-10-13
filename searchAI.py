@@ -98,6 +98,27 @@ def a_star_search(start_state, goal_state):
                 cost = node.cost + edges[node.state][child_state]
                 heuristic = get_heuristic(child_state)
                 priority_queue.append(Node(child_state, node, cost, heuristic))
+                
+# Define uniform-cost search algorithm
+def uniform_cost_search(start_state, goal_state):
+    priority_queue = [Node(start_state, None, 0)]
+    expanded_order = []
+    visited = set()
+
+    while priority_queue:
+        priority_queue.sort(key=lambda x: x.cost)
+        node = priority_queue.pop(0)
+        expanded_order.append(node.state)
+
+        if node.state == goal_state:
+            return expanded_order, construct_path(node)
+
+        if node.state not in visited:
+            visited.add(node.state)
+
+            for child_state in get_child_states(node.state):
+                cost = node.cost + edges[node.state][child_state]
+                priority_queue.append(Node(child_state, node, cost))
 
     
 
