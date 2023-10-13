@@ -36,3 +36,9 @@ def get_child_states(node_state):
 # Define a function to retrieve the heuristic value of a node
 def get_heuristic(node_state):
     return heuristic_values.get(node_state, 0)
+
+# Define depth-first search algorithm
+def depth_first_search(start_state, goal_state):
+    stack = [Node(start_state, None)]
+    visited = set()
+    expanded_order = []
