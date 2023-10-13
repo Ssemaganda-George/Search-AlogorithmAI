@@ -132,5 +132,34 @@ def construct_path(node):
 start_state = 'S'
 goal_state = 'G'
 
+# Perform Breadth-first search and print results.
+bfs_expanded_order, bfs_path = breadth_first_search(start_state, goal_state)
+print("Breadth-First Search(BFS):")
+print("Expanded Order:", bfs_expanded_order)
+print("Path:", bfs_path)
+
+# Perform Depth-first search and print results.
+dfs_expanded_order, dfs_path = depth_first_search(start_state, goal_state)
+print("\nDepth-First Search(DFS):")
+print("Expanded Order:", dfs_expanded_order)
+print("Path:", dfs_path)
+
+# Perform Uniform cost search and print results.
+ucs_expanded_order, ucs_path = uniform_cost_search(start_state, goal_state)
+print("\nUniform Cost Search(UCS):")
+print("Expanded Order:", ucs_expanded_order)
+print("Path:", ucs_path)
+
+# Perform Greedy best first search and print results.
+greedy_expanded_order, greedy_path = greedy_search(start_state, goal_state)
+print("\nGreedy Best First Search(GBFS):")
+print("Expanded Order:", greedy_expanded_order)
+print("Path:", greedy_path)
+
+# Perform A* search and print results.
+a_star_expanded_order, a_star_path = a_star_search(start_state, goal_state)
+print("\nA* Search:")
+print("Expanded Order:", a_star_expanded_order)
+print("Path:", a_star_path)
     
 
