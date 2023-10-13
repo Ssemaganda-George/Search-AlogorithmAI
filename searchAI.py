@@ -56,5 +56,26 @@ def depth_first_search(start_state, goal_state):
             for child_state in get_child_states(node.state):
                 stack.append(Node(child_state, node, node.cost + 1))
 
+# Define greedy-best-first search algorithm
+def greedy_search(start_state, goal_state):
+    priority_queue = [Node(start_state, None, heuristic=get_heuristic(start_state))]
+    expanded_order = []
+    visited = set()
+
+    while priority_queue:
+        priority_queue.sort(key=lambda x: x.heuristic)
+        node = priority_queue.pop(0)
+        expanded_order.append(node.state)
+
+        if node.state == goal_state:
+            return expanded_order, construct_path(node)
+
+        if node.state not in visited:
+            visited.add(node.state)
+
+            for child_state in get_child_states(node.state):
+                heuristic = get_heuristic(child_state)
+                priority_queue.append(Node(child_state, node, heuristic=heuristic))
+
     
 
