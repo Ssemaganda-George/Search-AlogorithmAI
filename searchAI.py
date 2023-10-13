@@ -42,7 +42,7 @@ def depth_first_search(start_state, goal_state):
     stack = [Node(start_state, None)]
     visited = set()
     expanded_order = []
-    
+
     while stack:
         node = stack.pop()
         expanded_order.append(node.state)
@@ -55,6 +55,46 @@ def depth_first_search(start_state, goal_state):
 
             for child_state in get_child_states(node.state):
                 stack.append(Node(child_state, node, node.cost + 1))
+
+# Define breadth-first search algorithm
+def breadth_first_search(start_state, goal_state):
+    queue = [Node(start_state, None)]
+    visited = set()
+    expanded_order = []
+
+    while queue:
+        node = queue.pop(0)
+        expanded_order.append(node.state)
+
+        if node.state == goal_state:
+            return expanded_order, construct_path(node)
+
+        if node.state not in visited:
+            visited.add(node.state)
+
+            for child_state in get_child_states(node.state):
+                queue.append(Node(child_state, node, node.cost + 1))
+
+# Define uniform-cost search algorithm
+def uniform_cost_search(start_state, goal_state):
+    priority_queue = [Node(start_state, None, 0)]
+    expanded_order = []
+    visited = set()
+
+    while priority_queue:
+        priority_queue.sort(key=lambda x: x.cost)
+        node = priority_queue.pop(0)
+        expanded_order.append(node.state)
+
+        if node.state == goal_state:
+            return expanded_order, construct_path(node)
+
+        if node.state not in visited:
+            visited.add(node.state)
+
+            for child_state in get_child_states(node.state):
+                cost = node.cost + edges[node.state][child_state]
+                priority_queue.append(Node(child_state, node, cost))
 
 # Define greedy-best-first search algorithm
 def greedy_search(start_state, goal_state):
@@ -76,7 +116,7 @@ def greedy_search(start_state, goal_state):
             for child_state in get_child_states(node.state):
                 heuristic = get_heuristic(child_state)
                 priority_queue.append(Node(child_state, node, heuristic=heuristic))
-                
+
 # Define A* search algorithm
 def a_star_search(start_state, goal_state):
     priority_queue = [Node(start_state, None, 0, get_heuristic(start_state))]
@@ -98,28 +138,7 @@ def a_star_search(start_state, goal_state):
                 cost = node.cost + edges[node.state][child_state]
                 heuristic = get_heuristic(child_state)
                 priority_queue.append(Node(child_state, node, cost, heuristic))
-                
-# Define uniform-cost search algorithm
-def uniform_cost_search(start_state, goal_state):
-    priority_queue = [Node(start_state, None, 0)]
-    expanded_order = []
-    visited = set()
 
-    while priority_queue:
-        priority_queue.sort(key=lambda x: x.cost)
-        node = priority_queue.pop(0)
-        expanded_order.append(node.state)
-
-        if node.state == goal_state:
-            return expanded_order, construct_path(node)
-
-        if node.state not in visited:
-            visited.add(node.state)
-
-            for child_state in get_child_states(node.state):
-                cost = node.cost + edges[node.state][child_state]
-                priority_queue.append(Node(child_state, node, cost))
-                
 # Define a function to construct the path from the goal node to the start node
 def construct_path(node):
     path = []
@@ -161,5 +180,3 @@ a_star_expanded_order, a_star_path = a_star_search(start_state, goal_state)
 print("\nA* Search:")
 print("Expanded Order:", a_star_expanded_order)
 print("Path:", a_star_path)
-    
-
