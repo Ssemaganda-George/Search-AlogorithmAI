@@ -42,3 +42,19 @@ def depth_first_search(start_state, goal_state):
     stack = [Node(start_state, None)]
     visited = set()
     expanded_order = []
+    
+    while stack:
+        node = stack.pop()
+        expanded_order.append(node.state)
+
+        if node.state == goal_state:
+            return expanded_order, construct_path(node)
+
+        if node.state not in visited:
+            visited.add(node.state)
+
+            for child_state in get_child_states(node.state):
+                stack.append(Node(child_state, node, node.cost + 1))
+
+    
+
