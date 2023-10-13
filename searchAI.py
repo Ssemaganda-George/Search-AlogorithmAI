@@ -119,6 +119,18 @@ def uniform_cost_search(start_state, goal_state):
             for child_state in get_child_states(node.state):
                 cost = node.cost + edges[node.state][child_state]
                 priority_queue.append(Node(child_state, node, cost))
+                
+# Define a function to construct the path from the goal node to the start node
+def construct_path(node):
+    path = []
+    while node:
+        path.insert(0, node.state)
+        node = node.parent
+    return path
+
+# Examples:
+start_state = 'S'
+goal_state = 'G'
 
     
 
