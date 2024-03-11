@@ -16,4 +16,18 @@ Uniform Cost Search (UCS):
 UCS explores the least-cost path first, expanding nodes based on their path cost. It is suitable for graphs with non-uniform edge costs and guarantees finding the optimal solution.
 s too large to be explored exhaustively. These algorithms iteratively improve candidate solutions based on local changes.
 
+A Search:*
 
+A* combines the advantages of UCS and heuristic search by using both the actual cost from the start node and a heuristic estimate of the remaining cost to the goal. It is widely used due to its completeness, optimality (under certain conditions), and efficiency.
+Greedy Best-First Search:
+
+Greedy Best-First Search expands nodes based solely on their heuristic estimate of the remaining cost to the goal. It is not guaranteed to find the optimal solution but is often used in applications where finding a reasonably good solution quickly is more important.
+Bidirectional Search:
+
+Bidirectional Search explores the search space from both the start and goal nodes simultaneously, meeting in the middle. It can be more efficient than traditional searches, especially in large search spaces.
+Constraint Satisfaction Problems (CSPs) Algorithms:
+
+Algorithms like Backtracking, Forward Checking, and Constraint Propagation are used to solve problems where variables must be assigned values satisfying certain constraints.
+Local Search Algorithms:
+
+Algorithms like Hill Climbing, Simulated Annealing, and Genetic Algorithms are used for optimization problems where the search space i
