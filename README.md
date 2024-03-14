@@ -5,7 +5,7 @@
 1)Breadth-First Search (BFS):
 BFS systematically explores all nodes at the current depth level before moving to the next level. It guarantees finding the shortest path in unweighted graphs or trees with uniform edge costs.
 
-2)Depth-First Search (DFS):
+2)Depth-First Search (DFS)
 DFS explores as far as possible along each branch before backtracking. It is often used in applications where finding any solution is sufficient, or in cases where memory usage is a concern.
 
 3)Iterative Deepening Depth-First Search (IDDFS):
