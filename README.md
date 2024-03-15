@@ -1,4 +1,4 @@
-# Search-Alogorithm AI**
+# Search-Alogorithm AI
 
 **This repo has python implementations for all AI search algorithms.**
 
