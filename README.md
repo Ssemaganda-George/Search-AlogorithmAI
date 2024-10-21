@@ -24,5 +24,8 @@ Greedy Best-First Search:
 Algorithms like Backtracking, Forward Checking, and Constraint Propagation are used to solve problems where variables must be assigned values satisfying certain constraints.
 Local Search Algorithms:
 
+
+
+
 Algorithms like Hill Climbing, Simulated Annealing, and Genetic Algorithms are used for optimization problems where the search space is too large to be explored exhaustively. These algorithms iteratively improve candidate solutions based on local changes.
 
